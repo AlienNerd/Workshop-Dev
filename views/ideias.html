@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+
+        <meta charset="UTF-8">
+        <title>Ideias - Casa Criativa</title>
+
+        <link rel="stylesheet" href="style.css">
+
+    </head>
+    <body>
+
+        <header>
+            <img src="logo.png">
+            <nav>
+                <li><a href="/">Inicio</a></li>
+                <li><a onclick="onOff()">Nova Ideia</a></li>
+            </nav>
+        </header>
+
+        <section id="title">
+            <p>Em exibição</p>
+            <h1>Ideias</h1>
+        </section>
+
+        
+        <main>
+
+            <section id="ideas">
+
+                {% for idea in ideas %}
+
+                    <div id="idea">
+
+                        <img src="{{idea.image}}" alt="img {{idea.title}}">
+                        
+                        <div class="content">
+                            <h3>{{idea.title}}</h3>
+                            <p>{{idea.category}}</p>
+                            <div class="description">
+                                {{idea.description}}
+                            </div>
+                            <a href={{idea.link}} target="_blank">Ir para a ideia</a>
+                        </div>
+                
+                    </div>
+
+                {% endfor %}
+
+            </section>
+        </main>
+
+        <div id="modal" class="hide">
+            <section id="sei lá">
+                <div id="box-form">
+
+                    <h1>  I  D  E  I  A  </h1>
+
+                    <form action="/" method="POST" onsubmit="return checkField(event)">
+
+                        <div class="input-wrapper">
+                        <label for="title">Título:</label>
+                        <input type="text" name="title">
+                        </div>
+
+                        <div class="input-wrapper">
+                        <label for="title">Categoria:</label>
+                        <input type="text" name="category">
+                        </div>
+
+                        <div class="input-wrapper">
+                        <label for="title">Link da Imagem:</label>
+                        <input type="url" name="image">
+                        </div>
+
+                        <div class="input-wrapper">
+                        <label for="title">Link da Ideia:</label>
+                        <input type="url" name="link">
+                        </div>
+
+                        <div class="descrição">
+                        <label for="title" >Descrição:</label>
+                        <textarea name="description" cols="30" rows="10"></textarea>
+                        </div>
+
+                        <div class="botoes-form">
+                        <button class="add" onclick=onOff()>Voltar</button>
+                        <button class="add">Adicionar</button>
+                        </div>
+
+                    </form>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            Com ♥️ <a href="http://rocketseat.com.br">Rocketseat</a>
+        </footer>
+
+        <script src="script.js"></script>
+
+    </body>
+</html>
